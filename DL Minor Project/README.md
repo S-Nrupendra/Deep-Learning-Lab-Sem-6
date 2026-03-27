@@ -162,12 +162,6 @@ All three models require their **own model-specific preprocessing function**, no
 | MobileNet | `[-1, 1]` | `[0, 1]` | Medium | 64.9% |
 | ResNet50 | `[0, 255]` → mean subtracted | `[0, 1]` | Low | 88.6% |
 
-# Use preprocessing_function= instead of rescale=
-train_datagen = ImageDataGenerator(preprocessing_function=eff_pre)
-```
-
-After this fix, EfficientNet is expected to reach **85–92%** accuracy.
-
 ---
 
 ## 🔭 Other Datasets for Future Work
