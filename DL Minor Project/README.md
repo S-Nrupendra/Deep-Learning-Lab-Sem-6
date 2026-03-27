@@ -125,27 +125,9 @@ A custom **Learning Rate Logger** callback was used to track LR changes across e
 
 ![Results](image-4.png)
 
-| Model | Dataset | Accuracy | Precision | Recall | F1-Score |
-|-------|---------|----------|-----------|--------|----------|
-| EfficientNet | No Handling | — | — | — | — |
-| EfficientNet | Under-Sampling | — | — | — | — |
-| EfficientNet | Under+Aug | — | — | — | — |
-| ResNet50 | No Handling | — | — | — | — |
-| ResNet50 | Under-Sampling | — | — | — | — |
-| ResNet50 | Under+Aug | — | — | — | — |
-| MobileNet | No Handling | — | — | — | — |
-| MobileNet | Under-Sampling | — | — | — | — |
-| MobileNet | Under+Aug | — | — | — | — |
-
 ### Dataset 2 — Kvasir-v2
 
 ![Results](image-7.png)
-
-| Model | Dataset | Accuracy | Precision | Recall | F1-Score |
-|-------|---------|----------|-----------|--------|----------|
-| EfficientNet | Original | 0.2452 | 0.1878 | 0.2452 | 0.1501 |
-| ResNet50 | Original | 0.8857 | 0.8896 | 0.8857 | 0.8853 |
-| MobileNet | Original | 0.6488 | 0.7097 | 0.6488 | 0.5949 |
 
 ---
 
@@ -179,12 +161,6 @@ All three models require their **own model-specific preprocessing function**, no
 | EfficientNetB0 | Internal normalization | `[0, 1]` | Very High | 24.5% |
 | MobileNet | `[-1, 1]` | `[0, 1]` | Medium | 64.9% |
 | ResNet50 | `[0, 255]` → mean subtracted | `[0, 1]` | Low | 88.6% |
-
-**Fix:**
-```python
-from tensorflow.keras.applications.efficientnet import preprocess_input as eff_pre
-from tensorflow.keras.applications.resnet50     import preprocess_input as res_pre
-from tensorflow.keras.applications.mobilenet    import preprocess_input as mob_pre
 
 # Use preprocessing_function= instead of rescale=
 train_datagen = ImageDataGenerator(preprocessing_function=eff_pre)
